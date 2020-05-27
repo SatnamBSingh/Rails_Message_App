@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MessageApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<center>
+  <body>
+
+    <div style= "background: darkorange;padding: 20px;width: 450px;" >
+    <p class="navbar-text float-right">
+<% if user_signed_in? %>
+  Logged in as <strong><%= current_user.email %></strong>.
+  <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>&nbsp; &nbsp
+<% else %> 
+  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link', class: "signup_button"  %> |
+  <%= link_to "Login", new_user_session_path, :class => 'navbar-link', class: "login_button"  %>
+<% end %>
+</p>
+    <% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+    <%= yield %>
+  </div>
+  </body>
+</center>
+
+</html>
+
+<style type="text/css">
+  .signup_button {
+    color: ghostwhite;
+    background: darkorange;
+    padding: 5px 20px;
+    border: solid;
+  }
+
+</style>
+<style type="text/css">
+.login_button{
+    color: ghostwhite;
+    border: solid;
+    padding: 5px 20px;
+    background: darkorange;
+}
+</style>
+
