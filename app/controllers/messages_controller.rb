@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    @message = Message.new
     @messages = Message.all
   end
 
@@ -24,11 +25,10 @@ class MessagesController < ApplicationController
   # POST /messages
   # POST /messages.json
   def create
-    @message = Message.new(message_params)
-
     respond_to do |format|
+      messages = Message.all
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was sent successfully .' }
+        format.html { redirect_to messages_path, notice: 'Message was sent successfully .' }
         format.json { render :show, status: :created, location: @message }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
+        format.html { redirect_to @messages_path, notice: 'Message was successfully updated.' }
         format.json { render :show, status: :ok, location: @message }
       else
         format.html { render :edit }

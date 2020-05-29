@@ -1,14 +1,15 @@
-<h2>Sign up</h2>
+<h1>Welcome to MessageMe App</h1>
+<h2>Sign up to continue</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "padding: 5px 70px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -16,7 +17,7 @@
     <%= f.password_field :password, autocomplete: "new-password", style: "padding: 5px 70px;" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", style: "padding: 5px 70px;" %>
   </div>
